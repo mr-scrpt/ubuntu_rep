@@ -13,8 +13,8 @@ services:
       - 80:80
       - 443:443
     environment:
-      - CF_API_EMAIL=mail@gmail.com
-      - CF_DNS_API_TOKEN=apitoken
+      - CF_API_EMAIL=mr.scrpt@gmail.com
+      - CF_DNS_API_TOKEN=KwF9C5XCPl4I6ZEhOQUtjredmspzW4_EZvQ4lH-q
       # - CF_API_KEY=YOU_API_KEY
     volumes:
       - /etc/localtime:/etc/localtime:ro
@@ -26,18 +26,18 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik.entrypoints=http"
-      - "traefik.http.routers.traefik.rule=Host(`traefik-dashboard.user.ru`)"
-      - "traefik.http.middlewares.traefik-auth.basicauth.users=user:password"
+      - "traefik.http.routers.traefik.rule=Host(`dashboard.homestation.pp.ua`)"
+      - "traefik.http.middlewares.traefik-auth.basicauth.users=mr:$$2y$$05$$e9Nf/I0rhPrbgpjhg7aEqe9YClMaKB/0pDfjExpibkv3FIzpVJuHm"
       - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"
       - "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=https"
       - "traefik.http.routers.traefik.middlewares=traefik-https-redirect"
       - "traefik.http.routers.traefik-secure.entrypoints=https"
-      - "traefik.http.routers.traefik-secure.rule=Host(`traefik-dashboard.user.ru`)"
+      - "traefik.http.routers.traefik-secure.rule=Host(`dashboard.homestation.pp.ua`)"
       - "traefik.http.routers.traefik-secure.middlewares=traefik-auth"
       - "traefik.http.routers.traefik-secure.tls=true"
       - "traefik.http.routers.traefik-secure.tls.certresolver=cloudflare"
-      - "traefik.http.routers.traefik-secure.tls.domains[0].main=user.ru"
-      - "traefik.http.routers.traefik-secure.tls.domains[0].sans=*.user.ru"
+      - "traefik.http.routers.traefik-secure.tls.domains[0].main=homestation.pp.ua"
+      - "traefik.http.routers.traefik-secure.tls.domains[0].sans=*.homestation.pp.ua"
       - "traefik.http.routers.traefik-secure.service=api@internal"
 
 
